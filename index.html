@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>MuniSalud · Formación del Plan de Acción Municipal · Comunidad de Madrid</title>
+<meta name="description" content="Plataforma formativa de la Dirección General de Salud Pública (Consejería de Sanidad) para el personal municipal del área de salud y áreas vinculadas de la Comunidad de Madrid.">
+<link rel="canonical" href="https://munisalud.org/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MuniSalud · Comunidad de Madrid">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://munisalud.org/">
+<meta property="og:title" content="MuniSalud · Formación del Plan de Acción Municipal">
+<meta property="og:description" content="Plataforma formativa de la Dirección General de Salud Pública (Consejería de Sanidad) para el personal municipal del área de salud y áreas vinculadas de la Comunidad de Madrid.">
+<meta property="og:image" content="https://munisalud.org/og-image-1200x630.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logotipo de la Comunidad de Madrid">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MuniSalud · Formación del Plan de Acción Municipal">
+<meta name="twitter:description" content="Plataforma formativa de la Dirección General de Salud Pública (Consejería de Sanidad) para el personal municipal de la Comunidad de Madrid.">
+<meta name="twitter:image" content="https://munisalud.org/og-image-1200x630.png">
+
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+
+<style>
+:root{
+  /* docs/brand/tokens-cam.css — si cambia uno, cambian los dos */
+  --cam-rojo:#FF0000;          /* solo fondos y texto grande (>=24px) — 4,00:1 */
+  --cam-rojo-texto:#D40000;    /* enlaces y texto pequeño — 5,53:1 */
+  --cam-negro:#000000;
+  --cam-blanco:#FFFFFF;
+  --cam-fuente:Arial,"Helvetica Neue",Helvetica,"Liberation Sans",Arimo,sans-serif;
+  --cam-fuente-titulares:"Arial Black",Arial,"Helvetica Neue",Helvetica,"Liberation Sans",Arimo,sans-serif;
+
+  /* Una sola variable de inset: izquierda y derecha SIEMPRE en la misma línea vertical. */
+  --inset:24px;
+  --ancho:1040px;
+}
+@media (min-width:768px){ :root{ --inset:48px; } }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--cam-blanco);
+  color:var(--cam-negro);
+  font-family:var(--cam-fuente);
+  font-size:17px;
+  line-height:1.55;
+  overflow-x:hidden;
+}
+
+/* Todo bloque de contenido usa ESTA regla y solo esta. Ningún margin-inline:auto suelto. */
+.fila{width:100%}
+.fila > .caja{
+  max-width:var(--ancho);
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:var(--inset);
+  padding-right:var(--inset);
+}
+
+.franja{background:var(--cam-rojo);color:var(--cam-blanco)}
+.franja .caja{padding-top:14px;padding-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.franja img{height:44px;width:auto;display:block}
+.franja p{margin:0;font-size:14px;line-height:1.35;font-weight:bold}
+
+main .caja{padding-top:40px;padding-bottom:8px}
+
+h1{
+  font-family:var(--cam-fuente-titulares);
+  font-size:clamp(28px,5.2vw,44px);
+  line-height:1.12;
+  margin:0 0 8px;
+  letter-spacing:-.01em;
+}
+.subtitulo{
+  font-size:clamp(17px,2.4vw,21px);
+  margin:0 0 28px;
+  max-width:60ch;
+}
+p{margin:0 0 18px;max-width:66ch}
+
+.cta{
+  display:inline-block;
+  background:var(--cam-rojo);
+  color:var(--cam-blanco);
+  font-family:var(--cam-fuente-titulares);
+  font-size:20px;                /* >=24px no; por eso va en negrita: 20px bold supera 18,66px */
+  font-weight:bold;
+  text-decoration:none;
+  padding:16px 28px;
+  border:3px solid var(--cam-rojo);
+  margin:6px 0 10px;
+}
+.cta:hover,.cta:focus-visible{background:var(--cam-blanco);color:var(--cam-rojo-texto)}
+.cta:focus-visible{outline:3px solid var(--cam-negro);outline-offset:3px}
+.url{font-size:15px;color:#444;margin:0 0 36px}
+
+.cursos{display:grid;gap:20px;margin:0 0 40px}
+@media (min-width:768px){ .cursos{grid-template-columns:1fr 1fr} }
+.curso{border:2px solid var(--cam-negro);padding:22px}
+.curso h2{font-family:var(--cam-fuente-titulares);font-size:19px;margin:0 0 8px;line-height:1.2}
+.curso p{font-size:16px;margin:0 0 12px}
+.curso dl{margin:0;font-size:15px}
+.curso dt{font-weight:bold;float:left;margin-right:6px}
+.curso dd{margin:0 0 4px}
+
+.filete{border:0;border-top:4px solid var(--cam-rojo);margin:0}
+
+footer .caja{padding-top:24px;padding-bottom:40px}
+footer p{font-size:14px;color:#444;margin:0 0 6px;max-width:none}
+footer a{color:var(--cam-rojo-texto)}
+
+.salto{position:absolute;left:-9999px}
+.salto:focus{position:static;display:inline-block;padding:8px;background:var(--cam-negro);color:var(--cam-blanco)}
+</style>
+</head>
+<body>
+
+<a class="salto" href="#contenido">Ir al contenido</a>
+
+<div class="fila franja">
+  <div class="caja">
+    <img src="/cam-marca.png" alt="Comunidad de Madrid">
+    <p>Consejería de Sanidad<br>Dirección General de Salud Pública</p>
+  </div>
+</div>
+
+<main class="fila" id="contenido">
+  <div class="caja">
+
+    <h1>Formación del Plan de Acción Municipal</h1>
+    <p class="subtitulo">Plataforma formativa de la Dirección General de Salud Pública (Consejería de Sanidad) de la Comunidad de Madrid.</p>
+
+    <p>El Plan de Acción Municipal es una iniciativa de la Dirección General de Salud Pública para impulsar la prevención y la promoción de la salud en los 179 municipios de la Comunidad de Madrid.</p>
+
+    <p>Se estructura en tres pilares: información, formación y apoyo económico a proyectos. Esta plataforma desarrolla el pilar formativo.</p>
+
+    <p>La oferta formativa se dirige al personal municipal del área de salud y áreas vinculadas —cultura, educación, mayores, mujeres, deportes, urbanismo— bajo el enfoque de Salud en Todas las Políticas.</p>
+
+    <a class="cta" href="https://formacion.munisalud.org/home">Entrar en la plataforma formativa</a>
+    <p class="url">formacion.munisalud.org</p>
+
+    <hr class="filete">
+
+    <div class="cursos">
+      <section class="curso">
+        <h2>Diseña tu proyecto de promoción de la salud</h2>
+        <p>Del diagnóstico del municipio a la convocatoria de subvenciones.</p>
+        <dl>
+          <dt>Dirigido a:</dt><dd>personal municipal del área de salud y áreas vinculadas.</dd>
+          <dt>Duración:</dt><dd>8 horas, a su ritmo.</dd>
+        </dl>
+      </section>
+      <section class="curso">
+        <h2>BIZI · Prevención del suicidio</h2>
+        <p>Primeros auxilios psicológicos y prevención de la conducta suicida.</p>
+        <dl>
+          <dt>Dirigido a:</dt><dd>cualquier persona.</dd>
+          <dt>Duración:</dt><dd>90 minutos.</dd>
+        </dl>
+      </section>
+    </div>
+
+  </div>
+</main>
+
+<footer class="fila">
+  <div class="caja">
+    <hr class="filete" style="margin-bottom:20px">
+    <p>© 2026 Comunidad de Madrid · Consejería de Sanidad · Dirección General de Salud Pública · Subdirección General de Prevención y Promoción de la Salud</p>
+    <p>Más información sobre el Plan de Acción Municipal en <a href="https://www.comunidad.madrid/salud/prevencion-promocion-salud-municipios-comunidad-madrid">comunidad.madrid</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
