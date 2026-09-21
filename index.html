@@ -31,16 +31,21 @@
 <style>
 :root{
   /* docs/brand/tokens-cam.css — si cambia uno, cambian los dos */
-  --cam-rojo:#FF0000;          /* solo fondos y texto grande (>=24px) — 4,00:1 */
-  --cam-rojo-texto:#D40000;    /* enlaces y texto pequeño — 5,53:1 */
+  --cam-rojo:#FF0000;
+  --cam-rojo-texto:#D40000;
   --cam-negro:#000000;
   --cam-blanco:#FFFFFF;
+  /* Colores de interfaz inspirados en la tarjeta sanitaria digital. */
+  --muni-azul:#2B6EB2;
+  --muni-azul-profundo:#124F8B;
+  --muni-azul-suave:#EAF3FB;
+  --muni-tinta:#10213B;
   --cam-fuente:Arial,"Helvetica Neue",Helvetica,"Liberation Sans",Arimo,sans-serif;
   --cam-fuente-titulares:"Arial Black",Arial,"Helvetica Neue",Helvetica,"Liberation Sans",Arimo,sans-serif;
 
   /* Una sola variable de inset: izquierda y derecha SIEMPRE en la misma línea vertical. */
   --inset:24px;
-  --ancho:1040px;
+  --ancho:1160px;
 }
 @media (min-width:768px){ :root{ --inset:48px; } }
 
@@ -48,8 +53,8 @@
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;
-  background:var(--cam-blanco);
-  color:var(--cam-negro);
+  background:#F7FBFF;
+  color:var(--muni-tinta);
   font-family:var(--cam-fuente);
   font-size:17px;
   line-height:1.55;
@@ -66,26 +71,41 @@ body{
   padding-right:var(--inset);
 }
 
-.franja{background:var(--cam-rojo);color:var(--cam-blanco)}
-.franja .caja{padding-top:14px;padding-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.franja img{height:44px;width:auto;display:block}
+.franja{
+  color:var(--cam-blanco);
+  background-color:var(--muni-azul-profundo);
+  background-image:radial-gradient(rgba(255,255,255,.26) 1px,transparent 1.5px);
+  background-size:14px 14px;
+}
+.franja .caja{padding-top:15px;padding-bottom:15px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.franja img{height:47px;width:auto;display:block}
 .franja p{margin:0;font-size:14px;line-height:1.35;font-weight:bold}
 
-main .caja{padding-top:40px;padding-bottom:8px}
+main .caja{padding-top:50px;padding-bottom:16px}
+.hero{display:grid;gap:32px;align-items:center;margin-bottom:54px}
+@media (min-width:860px){.hero{grid-template-columns:minmax(280px,.82fr) minmax(420px,1fr);gap:62px}}
+.hero-imagen{margin:0;position:relative}
+.hero-imagen::after{content:"";position:absolute;z-index:-1;right:-18px;bottom:-18px;width:74%;height:74%;border:18px solid var(--muni-azul-suave);border-radius:32px}
+.hero-imagen img{width:100%;height:clamp(330px,42vw,530px);object-fit:cover;object-position:center;display:block;border-radius:28px;box-shadow:0 18px 42px rgba(18,79,139,.19)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;margin:0 0 13px;color:var(--muni-azul-profundo);font-size:14px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase}
+.eyebrow::before{content:"";width:28px;height:5px;border-radius:9px;background:var(--cam-rojo)}
 
 h1{
   font-family:var(--cam-fuente-titulares);
-  font-size:clamp(28px,5.2vw,44px);
-  line-height:1.12;
-  margin:0 0 8px;
-  letter-spacing:-.01em;
+  color:var(--muni-tinta);
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  margin:0 0 18px;
+  letter-spacing:-.035em;
 }
 .subtitulo{
   font-size:clamp(17px,2.4vw,21px);
-  margin:0 0 28px;
+  color:#40536F;
+  margin:0 0 26px;
   max-width:60ch;
 }
 p{margin:0 0 18px;max-width:66ch}
+.hero .intro{font-size:18px;line-height:1.52;margin-bottom:26px}
 
 .cta{
   display:inline-block;
@@ -95,27 +115,35 @@ p{margin:0 0 18px;max-width:66ch}
   font-size:20px;                /* >=24px no; por eso va en negrita: 20px bold supera 18,66px */
   font-weight:bold;
   text-decoration:none;
-  padding:16px 28px;
+  border-radius:12px;
+  box-shadow:0 7px 0 #B90000;
+  padding:15px 27px;
   border:3px solid var(--cam-rojo);
   margin:6px 0 10px;
 }
-.cta:hover,.cta:focus-visible{background:var(--cam-blanco);color:var(--cam-rojo-texto)}
-.cta:focus-visible{outline:3px solid var(--cam-negro);outline-offset:3px}
-.url{font-size:15px;color:#444;margin:0 0 36px}
+.cta:hover,.cta:focus-visible{background:#C90000;color:var(--cam-blanco);transform:translateY(2px);box-shadow:0 5px 0 #A90000}
+.cta:focus-visible{outline:3px solid var(--muni-azul-profundo);outline-offset:4px}
+.url{font-size:15px;color:#40536F;margin:15px 0 0}
 
-.cursos{display:grid;gap:20px;margin:0 0 40px}
+.oferta{background:var(--muni-azul-suave);padding:42px 0 48px}
+.oferta h2{font-family:var(--cam-fuente-titulares);color:var(--muni-tinta);font-size:clamp(25px,3.2vw,34px);line-height:1.14;margin:0 0 8px;letter-spacing:-.025em}
+.oferta > .caja > p{margin-bottom:26px;color:#40536F}
+.cursos{display:grid;gap:20px;margin:0}
 @media (min-width:768px){ .cursos{grid-template-columns:1fr 1fr} }
-.curso{border:2px solid var(--cam-negro);padding:22px}
-.curso h2{font-family:var(--cam-fuente-titulares);font-size:19px;margin:0 0 8px;line-height:1.2}
-.curso p{font-size:16px;margin:0 0 12px}
-.curso dl{margin:0;font-size:15px}
-.curso dt{font-weight:bold;float:left;margin-right:6px}
-.curso dd{margin:0 0 4px}
+.curso{position:relative;overflow:hidden;background:var(--cam-blanco);border:1px solid #D6E5F3;border-radius:20px;padding:28px;box-shadow:0 10px 26px rgba(18,79,139,.1)}
+.curso::before{content:"";display:block;width:47px;height:7px;border-radius:8px;background:var(--muni-azul);margin-bottom:20px}
+.curso:nth-child(2)::before{background:var(--muni-azul-profundo)}
+.curso h3{font-family:var(--cam-fuente-titulares);color:var(--muni-tinta);font-size:22px;margin:0 0 10px;line-height:1.16;letter-spacing:-.02em}
+.curso p{font-size:16px;margin:0 0 17px;color:#40536F}
+.curso dl{margin:0;font-size:15px;color:#40536F}
+.curso dt{color:var(--muni-tinta);font-weight:bold;float:left;margin-right:6px}
+.curso dd{margin:0 0 5px}
 
-.filete{border:0;border-top:4px solid var(--cam-rojo);margin:0}
+.filete{border:0;border-top:3px solid var(--muni-azul);margin:0}
 
-footer .caja{padding-top:24px;padding-bottom:40px}
-footer p{font-size:14px;color:#444;margin:0 0 6px;max-width:none}
+footer{background:var(--cam-blanco)}
+footer .caja{padding-top:27px;padding-bottom:40px}
+footer p{font-size:14px;color:#40536F;margin:0 0 6px;max-width:none}
 footer a{color:var(--cam-rojo-texto)}
 
 .salto{position:absolute;left:-9999px}
@@ -135,42 +163,46 @@ footer a{color:var(--cam-rojo-texto)}
 
 <main class="fila" id="contenido">
   <div class="caja">
+    <section class="hero" aria-labelledby="titulo-principal">
+      <figure class="hero-imagen">
+        <img src="/biblioteca-munisalud.jpg" alt="Publicaciones del Centro Regional de Documentación y Educación Sanitaria en una estantería">
+      </figure>
+      <div>
+        <p class="eyebrow">Aula Municipal de Salud Pública</p>
+        <h1 id="titulo-principal">Formación del Plan de Acción Municipal</h1>
+        <p class="subtitulo">Aprendizaje práctico para impulsar la salud desde los municipios de la Comunidad de Madrid.</p>
+        <p class="intro">Una plataforma de la Dirección General de Salud Pública para los equipos municipales y profesionales que hacen posible la promoción de la salud en el territorio.</p>
+        <a class="cta" href="https://formacion.munisalud.org/home">Entrar en la plataforma</a>
+        <p class="url">formacion.munisalud.org</p>
+      </div>
+    </section>
+  </div>
+</main>
 
-    <h1>Formación del Plan de Acción Municipal</h1>
-    <p class="subtitulo">Plataforma formativa de la Dirección General de Salud Pública (Consejería de Sanidad) de la Comunidad de Madrid.</p>
-
-    <p>El Plan de Acción Municipal es una iniciativa de la Dirección General de Salud Pública para impulsar la prevención y la promoción de la salud en los 179 municipios de la Comunidad de Madrid.</p>
-
-    <p>Se estructura en tres pilares: información, formación y apoyo económico a proyectos. Esta plataforma desarrolla el pilar formativo.</p>
-
-    <p>La oferta formativa se dirige al personal municipal del área de salud y áreas vinculadas —cultura, educación, mayores, mujeres, deportes, urbanismo— bajo el enfoque de Salud en Todas las Políticas.</p>
-
-    <a class="cta" href="https://formacion.munisalud.org/home">Entrar en la plataforma formativa</a>
-    <p class="url">formacion.munisalud.org</p>
-
-    <hr class="filete">
-
+<section class="fila oferta" aria-labelledby="titulo-oferta">
+  <div class="caja">
+    <h2 id="titulo-oferta">Programas para actuar en salud</h2>
+    <p>Contenidos aplicables, a tu ritmo y conectados con las necesidades de los municipios.</p>
     <div class="cursos">
-      <section class="curso">
-        <h2>Diseña tu proyecto de promoción de la salud</h2>
+      <article class="curso">
+        <h3>Diseña tu proyecto de promoción de la salud</h3>
         <p>Del diagnóstico del municipio a la convocatoria de subvenciones.</p>
         <dl>
           <dt>Dirigido a:</dt><dd>personal municipal del área de salud y áreas vinculadas.</dd>
           <dt>Duración:</dt><dd>8 horas, a su ritmo.</dd>
         </dl>
-      </section>
-      <section class="curso">
-        <h2>BIZI · Prevención del suicidio</h2>
+      </article>
+      <article class="curso">
+        <h3>BIZI · Prevención del suicidio</h3>
         <p>Primeros auxilios psicológicos y prevención de la conducta suicida.</p>
         <dl>
           <dt>Dirigido a:</dt><dd>profesionales sanitarios y agentes comunitarios de la Comunidad de Madrid.</dd>
           <dt>Duración:</dt><dd>90 minutos.</dd>
         </dl>
-      </section>
+      </article>
     </div>
-
   </div>
-</main>
+</section>
 
 <footer class="fila">
   <div class="caja">
